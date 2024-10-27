@@ -20,11 +20,7 @@
   in {
     nixosModules.vpn-server = (import ./vpn-server.nix);
 
-    nixosModules.vpn-client = (import ./vpn-client.nix) {
-      inherit pkgs lib;
-      ip = "10.100.0.2";
-      publicKey = builtins.readFile ./secrets/client.pub;
-    };
+    nixosModules.vpn-client = (import ./vpn-client.nix);
 
     nixosConfigurations."vpn-server" = lib.nixosSystem {
       inherit system pkgs;
