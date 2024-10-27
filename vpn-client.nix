@@ -39,7 +39,7 @@
           allowedIPs = ["${endpoint}/32"];
 
           # Set this to the server IP and port.
-          endpoint = "${endpoint}:${port}";
+          endpoint = "${endpoint}:${builtins.toString port}";
 
           # Send keepalives every 25 seconds. Important to keep NAT tables alive.
           persistentKeepalive = 25;
