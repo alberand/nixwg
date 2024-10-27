@@ -11,6 +11,8 @@
   networking.firewall = {
     allowedUDPPorts = [port]; # Clients and peers can use the same port, see listenport
   };
+
+  age.secrets.cliprivate.file = ./secrets/client.private.age;
   # Enable WireGuard
   networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.

@@ -27,8 +27,6 @@
       modules = [
         agenix.nixosModules.default
         ({config, pkgs, ...}: {
-          age.secrets.cliprivate.file = ./secrets/client.private.age;
-          age.secrets.srvprivate.file = ./secrets/server.private.age;
           boot.isContainer = true;
           # We need ssh enabled and login at least once to generate host ssh
           # keys in /etc/ssh (see services.openssh.hostKeys)

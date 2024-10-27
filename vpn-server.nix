@@ -7,6 +7,7 @@
   extInterface ? "eth0",
   ...
 }: {
+  age.secrets.srvprivate.file = ./secrets/server.private.age;
 
   environment.systemPackages = with pkgs; [
     iproute2
