@@ -34,7 +34,16 @@
           age.secrets.cliprivate.file = ./secrets/client.private.age;
           age.secrets.srvprivate.file = ./secrets/server.private.age;
           boot.isContainer = true;
-          services.openssh.enable = true;
+          # We need ssh enabled and login at least once to generate host ssh
+          # keys in /etc/ssh (see services.openssh.hostKeys)
+          services.openssh = {
+            enable = true;
+            settings = {
+              PasswordAuthentication = true;
+              AllowUsers = ["root"];
+              PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+            };
+          };
           system.stateVersion = "24.05";
         })
         ({config, pkgs, ...}: self.nixosModules.vpn-server {
